@@ -1,0 +1,18 @@
+﻿<Window x:Class="SalesWPFApp.WindowLogin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SalesWPFApp"
+        mc:Ignorable="d"
+        Title="WindowLogin" Height="550" Width="800"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        MouseDown="Window_MouseDown">
+        
+    <Canvas x:Name="LoginWindow" >
+        <Label Content="Label" Canvas.Left="130" Canvas.Top="174"/>
+
+    </Canvas>
+</Window>
