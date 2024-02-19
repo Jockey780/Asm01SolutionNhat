@@ -11,13 +11,13 @@ namespace BusinessObject.Models
         }
 
         public int OrderId { get; set; }
-        public int MemberId { get; set; }
+        public string UserId { get; set; } = null!;
         public DateTime OrderDate { get; set; }
         public DateTime? RequiredDate { get; set; }
         public DateTime? ShippedDate { get; set; }
         public decimal? Freight { get; set; }
 
-        public virtual Member Member { get; set; } = null!;
+        public virtual User User { get; set; } = null!;
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }
     }
 }

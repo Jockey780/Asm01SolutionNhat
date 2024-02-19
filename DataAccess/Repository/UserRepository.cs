@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Repository
 {
-    public interface IMemberRepository
+    public class UserRepository: IUserRepository
     {
+        
     }
 }

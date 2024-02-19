@@ -17,10 +17,10 @@ namespace BusinessObject.Models
         {
         }
 
-        public virtual DbSet<Member> Members { get; set; } = null!;
         public virtual DbSet<Order> Orders { get; set; } = null!;
         public virtual DbSet<OrderDetail> OrderDetails { get; set; } = null!;
         public virtual DbSet<Product> Products { get; set; } = null!;
+        public virtual DbSet<User> Users { get; set; } = null!;
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -40,36 +40,8 @@ namespace BusinessObject.Models
             return strConn;
         }
 
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Member>(entity =>
-            {
-                entity.ToTable("Member");
-
-                entity.Property(e => e.MemberId).ValueGeneratedNever();
-
-                entity.Property(e => e.City)
-                    .HasMaxLength(15)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.CompanyName)
-                    .HasMaxLength(40)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.Country)
-                    .HasMaxLength(15)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.Email)
-                    .HasMaxLength(100)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.Password)
-                    .HasMaxLength(30)
-                    .IsUnicode(false);
-            });
-
             modelBuilder.Entity<Order>(entity =>
             {
                 entity.ToTable("Order");
@@ -84,11 +56,13 @@ namespace BusinessObject.Models
 
                 entity.Property(e => e.ShippedDate).HasColumnType("datetime");
 
-                entity.HasOne(d => d.Member)
+                entity.Property(e => e.UserId).HasMaxLength(20);
+
+                entity.HasOne(d => d.User)
                     .WithMany(p => p.Orders)
-                    .HasForeignKey(d => d.MemberId)
+                    .HasForeignKey(d => d.UserId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Order_Member");
+                    .HasConstraintName("FK_Order_User");
             });
 
             modelBuilder.Entity<OrderDetail>(entity =>
@@ -123,15 +97,23 @@ namespace BusinessObject.Models
                     .IsUnicode(false);
 
                 entity.Property(e => e.UnitPrice).HasColumnType("money");
+            });
 
-                entity.Property(e => e.Weight)
-                    .HasMaxLength(20)
-                    .IsUnicode(false);
+            modelBuilder.Entity<User>(entity =>
+            {
+                entity.ToTable("User");
+
+                entity.Property(e => e.UserId).HasMaxLength(20);
+
+                entity.Property(e => e.Password).HasMaxLength(80);
+
+                entity.Property(e => e.UserName).HasMaxLength(100);
             });
 
             OnModelCreatingPartial(modelBuilder);
         }
 
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
+        
     }
 }
