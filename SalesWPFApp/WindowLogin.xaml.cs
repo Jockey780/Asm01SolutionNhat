@@ -49,6 +49,27 @@ namespace SalesWPFApp
 
         private void btn_Login_Click(object sender, RoutedEventArgs e)
         {
+            string username = txt_Username.Text.Trim();
+            string password = txt_Password.Password.Trim();
+
+            if (string.IsNullOrWhiteSpace(username) && string.IsNullOrWhiteSpace(password))
+            {
+                MessageBox.Show("Please enter username and password!!!");
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(username))
+            {
+                MessageBox.Show("Please enter username!!!");
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(password))
+            {
+                MessageBox.Show("Please enter password!!!");
+                return;
+            }
+
             User AuthenUser = userService.GetUserByUsernameAndPassword(txt_Username.Text, txt_Password.Password);
 
             if(AuthenUser != null)
@@ -71,12 +92,11 @@ namespace SalesWPFApp
                         MessageBox.Show("Unknown user role.");
                         break;
                 }
-
                 Close();
             }
             else
             {
-                MessageBox.Show("Authentication failed.");
+                MessageBox.Show("Login failed - Please check your username or password correctly.");
             }
         }
     }
