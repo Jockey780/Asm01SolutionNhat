@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BusinessObject.Models;
+using DataAccess.DAO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +10,6 @@ namespace DataAccess.Repository
 {
     public class UserRepository: IUserRepository
     {
-        
+        public User GetUserByUsernameAndPassword(string username, string password)=>UserDAO.Instance.GetUserByUsernameAndPassword(username, password);
     }
 }

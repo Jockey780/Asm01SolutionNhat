@@ -148,7 +148,7 @@
                              FontWeight="Medium"
                              Margin="0,50,0,0"/>
                     
-                    <TextBox x:Name="txt_User"
+                    <TextBox x:Name="txt_Username"
                              FontSize="20"
                              FontFamily="Montserrat"
                              Background="Transparent"

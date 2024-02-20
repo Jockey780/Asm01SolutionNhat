@@ -5,10 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataAccess.Repository
+namespace Service
 {
-    public interface IUserRepository
+    public interface IUserService
     {
-        public User GetUserByUsernameAndPassword(string username, string password);
+        User GetUserByUsernameAndPassword(string username, string password);
     }
 }

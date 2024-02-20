@@ -12,25 +12,38 @@ namespace DataAccess.DAO
         private static UserDAO instance = null;
         private readonly SalesManagementContext dbContext = null;
 
-        public UserDAO()
+        private UserDAO()
         {
-            if (dbContext == null)
-            {
-                dbContext = new SalesManagementContext();
-            }
+            dbContext = new SalesManagementContext();
         }
 
-        public static UserDAO getInstance()
+        public static UserDAO Instance
         {
-            if (instance == null)
+            get
             {
-                instance = new UserDAO();
+                if (instance == null)
+                {
+                    instance = new UserDAO();
+                }
+                return instance;
             }
-            return instance;
         }
-        public User GetUserByUserId(string id)
+        public User GetUserByUsernameAndPassword(string username, string password)
         {
-            return dbContext.Users.FirstOrDefault(m => m.UserId.Equals(id));
-        }        
-    }
+            var user = dbContext.Users.SingleOrDefault(u=>u.UserName == username && u.Password == password);
+
+            if (user != null)
+            {
+                User mappedUser = new User
+                {
+                    UserId = user.UserId,
+                    UserName = user.UserName,
+                    Password = user.Password,
+                    UserRole = user.UserRole
+                };
+                return mappedUser;
+            }
+            return user;
+        }
+     }
 }
