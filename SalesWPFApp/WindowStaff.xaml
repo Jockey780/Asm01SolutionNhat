@@ -5,8 +5,88 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SalesWPFApp"
         mc:Ignorable="d"
-        Title="WindowStaff" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="WindowAdmin" Height="500" Width="850"
+        xmlns:fa = "http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        Background="Transparent"
+        AllowsTransparency="True">
+
+    <Border CornerRadius="12"            
+            BorderThickness="1">
+
+        <Border.BorderBrush>
+            <LinearGradientBrush StartPoint="0, 0" EndPoint="1, 1">
+                <GradientStop Color="#462ADB" Offset="0"/>
+                <GradientStop Color="#DA34AE" Offset="0.75"/>
+                <GradientStop Color="#8A16C1" Offset="1"/>
+            </LinearGradientBrush>
+        </Border.BorderBrush>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <!--Menu-->
+                <ColumnDefinition Width="220"/>
+                <!--Content-->
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!--Menu-->
+            <Border CornerRadius="10,0,0,10"
+                    Grid.Column="0">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0, 0" EndPoint="1, 1">
+                        <GradientStop Color="Cyan" Offset="1"/>
+                        <GradientStop Color="WhiteSmoke" Offset="0.1"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+
+                <StackPanel>
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="SALES MANAGEMENT"
+                                   Foreground="Black"
+                                   FontWeight="Bold"
+                                   FontFamily="Montserrat"
+                                   FontSize="15"
+                                   HorizontalAlignment="Center"
+                                   Margin="0,10,0,20"/>
+                    </StackPanel>
+
+                    <!--Menu buttons-->
+
+                    <RadioButton Style="{StaticResource menuButton}"
+                                 Tag="{StaticResource color4}">
+                        <StackPanel Orientation="Horizontal">
+                            <fa:IconImage Icon="ProductHunt" Style="{StaticResource menuButtonIcon}"/>
+                            <TextBlock Text="Product"/>
+                        </StackPanel>
+                    </RadioButton>
+
+                    <RadioButton Style="{StaticResource menuButton}"
+                                 Tag="{StaticResource color3}">
+                        <StackPanel Orientation="Horizontal">
+                            <fa:IconImage Icon="List" Style="{StaticResource menuButtonIcon}"/>
+                            <TextBlock Text="Oder detail"/>
+                        </StackPanel>
+                    </RadioButton>
+                   
+                </StackPanel>
+
+            </Border>
+
+            <!--Content-->
+            <Border CornerRadius="0,10,10,0"
+                    Grid.Column="1">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="1, 1" EndPoint="0,0">
+                        <GradientStop Color="White" Offset="0"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+
+            </Border>
+
+        </Grid>
+
+    </Border>
+
 </Window>

@@ -19,7 +19,7 @@
         </Border.Background>
         <Border CornerRadius="12"            
             BorderThickness="2"
-            Opacity="0.65">
+            Opacity="0.66">
 
             <Border.BorderBrush>
                 <LinearGradientBrush StartPoint="0, 0" EndPoint="1, 1">
@@ -188,7 +188,7 @@
                              FontFamily="Montserrat"
                              Cursor="Hand"
                              Grid.Column="2"
-                            Margin="0,50,0,0"
+                             Margin="0,50,0,0"
                              Click="btn_Login_Click">
 
                         <Button.Style>
@@ -238,6 +238,7 @@
             </Grid>
 
         </Border>
+        
     </Border>
 
 </Window>

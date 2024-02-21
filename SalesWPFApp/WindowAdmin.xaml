@@ -6,12 +6,14 @@
         xmlns:local="clr-namespace:SalesWPFApp"
         xmlns:fa = "http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
         mc:Ignorable="d"
-        Title="WindowAdmin" Height="500" Width="800"
+        Title="WindowAdmin" Height="500" Width="850"
         WindowStyle="None"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
         Background="Transparent"
         AllowsTransparency="True">
 
-    
+
     <Border CornerRadius="12"            
             BorderThickness="1">
 
@@ -36,7 +38,7 @@
                 <Border.Background>
                     <LinearGradientBrush StartPoint="0, 0" EndPoint="1, 1">
                         <GradientStop Color="Cyan" Offset="1"/>
-                        <GradientStop Color="White" Offset="0.1"/>
+                        <GradientStop Color="WhiteSmoke" Offset="0.1"/>
                     </LinearGradientBrush>
                 </Border.Background>
 
@@ -48,32 +50,38 @@
                                    FontFamily="Montserrat"
                                    FontSize="15"
                                    HorizontalAlignment="Center"
-                                   Margin="0,5,0,0"/>
+                                   Margin="0,10,0,20"/>
                     </StackPanel>
-                    
+
                     <!--Menu buttons-->
                     <RadioButton Style="{StaticResource menuButton}"
                                  Tag="{StaticResource color1}">
                         <StackPanel Orientation="Horizontal">
                             <fa:IconImage Icon="User" Style="{StaticResource menuButtonIcon}"/>
                             <TextBlock Text="User"/>
-                        </StackPanel>                        
+                        </StackPanel>
                     </RadioButton>
 
-                    <RadioButton >
+                    <RadioButton Style="{StaticResource menuButton}"
+                                 Tag="{StaticResource color2}">
                         <StackPanel Orientation="Horizontal">
+                            <fa:IconImage Icon="BagShopping" Style="{StaticResource menuButtonIcon}"/>
                             <TextBlock Text="Order"/>
                         </StackPanel>
                     </RadioButton>
 
-                    <RadioButton >
+                    <RadioButton Style="{StaticResource menuButton}"
+                                 Tag="{StaticResource color3}">
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="OrderDetail"/>
+                            <fa:IconImage Icon="List" Style="{StaticResource menuButtonIcon}"/>
+                            <TextBlock Text="Order detail"/>
                         </StackPanel>
                     </RadioButton>
 
-                    <RadioButton >
+                    <RadioButton Style="{StaticResource menuButton}"
+                                 Tag="{StaticResource color4}">
                         <StackPanel Orientation="Horizontal">
+                            <fa:IconImage Icon="ProductHunt" Style="{StaticResource menuButtonIcon}"/>
                             <TextBlock Text="Product"/>
                         </StackPanel>
                     </RadioButton>
@@ -90,10 +98,10 @@
                         <GradientStop Color="White" Offset="0"/>
                     </LinearGradientBrush>
                 </Border.Background>
-                
+
             </Border>
 
         </Grid>
-        
+
     </Border>
 </Window>
