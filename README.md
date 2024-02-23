@@ -27,6 +27,7 @@ Các phi chức năng đã thực hiện:
 
 Tổng kết
 
-(với đây là lần đầu em là host GitHub nếu có sai sót gì mong thầy thông cảm)
+(đây là lần đầu em là host GitHub nếu có sai sót gì mong thầy thông cảm)
+
 	Với những chức năng và thiếu sót của em thì em xin đánh giá bài em là 6 điểm.
 		Em xin cảm ơn
