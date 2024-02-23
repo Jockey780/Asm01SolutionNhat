@@ -181,7 +181,6 @@
                     <ContentControl x:Name="contentControl"
                                     Grid.Row="2"
                                     Margin="18">
-                        <local:ProductPage/>
                     </ContentControl>
 
                 </Grid>

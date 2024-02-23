@@ -143,24 +143,24 @@ namespace SalesWPFApp.Views
 
             if (string.IsNullOrEmpty(keyword))
             {
-                // Nếu TextBox tìm kiếm trống, hiển thị toàn bộ sản phẩm
+                // Nếu Search trống, hiển thị toàn bộ sản phẩm
                 RefreshDataGrid();
             }
             else
             {
                 // Kiểm tra xem keyword có phải là một số không
-                if (int.TryParse(keyword, out int categoryId))
+                if (int.TryParse(keyword, out int parsedValue))
                 {
-                    // Nếu keyword là một số, lọc danh sách sản phẩm theo CategoryId
+                    // Lọc product theo categoryId hoặc quantity nếu keyword là số
                     List<Product> filteredProducts = productService.GetProducts().Where(p =>
-                        p.Category == categoryId
+                        p.Category == parsedValue || p.Quantity == parsedValue
                     ).ToList();
 
                     dtg_Product.ItemsSource = filteredProducts;
                 }
                 else
                 {
-                    // Nếu không phải là số, thực hiện tìm kiếm theo các trường khác
+                    // Nếu không phải là số thực hiện tìm kiếm theo các trường khác
                     List<Product> filteredProducts = productService.GetProducts().Where(p =>
                         p.ProductName.ToLower().Contains(keyword) ||
                         p.UnitPrice.ToString().ToLower().Contains(keyword) ||
