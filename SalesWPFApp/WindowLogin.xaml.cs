@@ -74,6 +74,7 @@ namespace SalesWPFApp
 
             if(AuthenUser != null)
             {
+
                 switch (AuthenUser.UserRole)
                 {
                     case 1:

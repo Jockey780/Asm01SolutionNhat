@@ -28,5 +28,15 @@ namespace DataAccess.DAO
                 return instance;
             }
         }
+        public List<Product> GetProducts()
+        {
+            return dbContext.Products.ToList();
+        }
+
+        public void AddProduct(Product product)
+        {
+            dbContext.Products.Add(product);
+            dbContext.SaveChanges();
+        }
     }
 }

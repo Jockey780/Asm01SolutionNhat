@@ -3,10 +3,10 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:SalesWPFApp"
+        xmlns:local="clr-namespace:SalesWPFApp.Views"
         xmlns:fa = "http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
         mc:Ignorable="d"
-        Title="WindowAdmin" Height="500" Width="850"
+        Title="WindowAdmin" Height="500" Width="1000"
         WindowStyle="None"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
@@ -14,6 +14,7 @@
         AllowsTransparency="True">
 
 
+    
     <Border CornerRadius="12"            
             BorderThickness="1">
 
@@ -54,16 +55,22 @@
                     </StackPanel>
 
                     <!--Menu buttons-->
-                    <RadioButton Style="{StaticResource menuButton}"
-                                 Tag="{StaticResource color1}">
+                    <RadioButton
+                                 Style="{StaticResource menuButton}"
+                                 Tag="{StaticResource color1}"
+                                 Checked="MenuButton_Checked"
+                                 GroupName="MenuGroup">
                         <StackPanel Orientation="Horizontal">
                             <fa:IconImage Icon="User" Style="{StaticResource menuButtonIcon}"/>
                             <TextBlock Text="User"/>
                         </StackPanel>
+                        
                     </RadioButton>
 
                     <RadioButton Style="{StaticResource menuButton}"
-                                 Tag="{StaticResource color4}">
+                                 Tag="{StaticResource color4}"
+                                 Checked="MenuButton_Checked"
+                                 GroupName="MenuGroup">
                         <StackPanel Orientation="Horizontal">
                             <fa:IconImage Icon="ProductHunt" Style="{StaticResource menuButtonIcon}"/>
                             <TextBlock Text="Product"/>
@@ -71,7 +78,9 @@
                     </RadioButton>
 
                     <RadioButton Style="{StaticResource menuButton}"
-                                 Tag="{StaticResource color2}">
+                                 Tag="{StaticResource color2}"
+                                 Checked="MenuButton_Checked"
+                                 GroupName="MenuGroup">
                         <StackPanel Orientation="Horizontal">
                             <fa:IconImage Icon="BagShopping" Style="{StaticResource menuButtonIcon}"/>
                             <TextBlock Text="Order"/>
@@ -79,7 +88,9 @@
                     </RadioButton>
 
                     <RadioButton Style="{StaticResource menuButton}"
-                                 Tag="{StaticResource color12}">
+                                 Tag="{StaticResource color12}"
+                                 Checked="MenuButton_Checked"
+                                 GroupName="MenuGroup">
                         <StackPanel Orientation="Horizontal">
                             <fa:IconImage Icon="List" Style="{StaticResource menuButtonIcon}"/>
                             <TextBlock Text="Order detail"/>
@@ -109,7 +120,7 @@
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
                     
-                    <!--Cotrol bar-->
+                    <!--Control bar-->
                     <StackPanel x:Name="pnlControlBar"
                                 Grid.Row="0"
                                 Orientation="Horizontal"
@@ -148,35 +159,18 @@
                             <ColumnDefinition />
                             <ColumnDefinition />
                         </Grid.ColumnDefinitions>
-                        
-                        <!--Caption-->
-                        <StackPanel Grid.Column="0"
-                                    Orientation="Horizontal"
-                                    VerticalAlignment="Center">
-                            <fa:IconImage Icon="User"
-                                          Height="20"
-                                          Width="20"
-                                          Foreground="Gray"
-                                          Margin="35,0,10,0"/>
-                            <TextBlock Text="User"
-                                       Foreground="Gray"
-                                       FontSize="16"
-                                       FontFamily="Montserrat"
-                                       FontWeight="Medium"
-                                       VerticalAlignment="Center"/>
-                        </StackPanel>
 
-                        <!--Log in-->
+                        <!--Log out-->
                         <StackPanel Grid.Column="1"
                                     Orientation="Horizontal"
                                     FlowDirection="RightToLeft"
                                     VerticalAlignment="Center"
                                     Margin="0,0,10,0">
 
-                            <Button Style="{StaticResource iconButton}"
-                                    Tag="{StaticResource color1}">
-                                <fa:IconImage Icon="AngleDown" Style="{StaticResource iconButtonIcon}"/>
-                            </Button>
+                            <Button Content="Log out" 
+                                    Click="btn_Logout_Click"
+                                    Background="Transparent"
+                                    Margin="10,0,0,0"/>
 
 
                         </StackPanel>
@@ -184,9 +178,11 @@
                     </Grid>
 
                     <!--Content section-->
-                    <ContentControl Content=""
+                    <ContentControl x:Name="contentControl"
                                     Grid.Row="2"
-                                    Margin="18"/>
+                                    Margin="18">
+                        <local:ProductPage/>
+                    </ContentControl>
 
                 </Grid>
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SalesWPFApp.Views;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -13,6 +14,7 @@ using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace SalesWPFApp
 {
@@ -24,16 +26,16 @@ namespace SalesWPFApp
         public WindowAdmin()
         {
             InitializeComponent();
-            
+
         }
 
         [DllImport("user32.dll")]
-        public static extern IntPtr SendMessage(IntPtr hWnd, int wMsg, int wParam,int lParam);
+        public static extern IntPtr SendMessage(IntPtr hWnd, int wMsg, int wParam, int lParam);
 
         private void pnlControlBar_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             WindowInteropHelper helper = new WindowInteropHelper(this);
-            SendMessage(helper.Handle, 161,2,0);
+            SendMessage(helper.Handle, 161, 2, 0);
         }
 
         private void pnlControlBar_MouseEnter(object sender, MouseEventArgs e)
@@ -53,14 +55,33 @@ namespace SalesWPFApp
 
         private void btnMaximize_Click(object sender, RoutedEventArgs e)
         {
-            if(this.WindowState == WindowState.Normal)
+            if (this.WindowState == WindowState.Normal)
             {
                 this.WindowState = WindowState.Maximized;
             }
             else
             {
                 this.WindowState = WindowState.Normal;
-            }            
+            }
+        }
+
+        private void btn_Logout_Click(object sender, RoutedEventArgs e)
+        {
+            WindowLogin loginWindow = new WindowLogin();
+            loginWindow.Show();
+
+            Close();
+        }
+
+        private void MenuButton_Checked(object sender, RoutedEventArgs e)
+        {
+            RadioButton radioButton = (RadioButton)sender;
+
+            if (radioButton.IsChecked == true)
+            {
+                contentControl.Content = new ProductPage();
+            }
         }
     }
 }
+

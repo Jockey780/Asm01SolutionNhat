@@ -5,11 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataAccess.Repository
+namespace Service
 {
-    public interface IProductRepository
+    public interface IProductService
     {
-        public List<Product> GetProducts();
+        List<Product> GetProducts();
         public void AddProduct(Product product);
     }
 }

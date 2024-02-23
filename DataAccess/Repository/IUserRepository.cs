@@ -10,5 +10,6 @@ namespace DataAccess.Repository
     public interface IUserRepository
     {
         public User GetUserByUsernameAndPassword(string username, string password);
+        public List<User> GetUsers();
     }
 }

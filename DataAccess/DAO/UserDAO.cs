@@ -45,5 +45,9 @@ namespace DataAccess.DAO
             }
             return user;
         }
+        public List<User> GetUsers()
+        {
+            return dbContext.Users.ToList();
+        }
      }
 }

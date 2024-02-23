@@ -11,5 +11,6 @@ namespace DataAccess.Repository
     public class UserRepository: IUserRepository
     {
         public User GetUserByUsernameAndPassword(string username, string password)=>UserDAO.Instance.GetUserByUsernameAndPassword(username, password);
+        public List<User> GetUsers()=>UserDAO.Instance.GetUsers();
     }
 }
