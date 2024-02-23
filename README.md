@@ -3,7 +3,7 @@ Mô tả bài chi tiết Assigment 1 WPF
 	SE161790 
 	SĐT: 0338290661
 
-Các chức năng đã thực hiện:
+Các chức năng đã thực hiện (Login và CRUD cho Product):
 - Login
 	- Có valadiation khi đăng nhập (báo lỗi khi đăng nhập sai)
 	- Có chức năng phần quyền cho từng Roles(Admin, Staff, Customer)
