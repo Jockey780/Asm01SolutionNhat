@@ -3,10 +3,10 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:SalesWPFApp"
+        xmlns:local="clr-namespace:SalesWPFApp.Views"
         mc:Ignorable="d"
-        Title="WindowAdmin" Height="500" Width="850"
         xmlns:fa = "http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
+        Title="WindowAdmin" Height="500" Width="1000"
         WindowStyle="None"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
@@ -82,6 +82,82 @@
                         <GradientStop Color="White" Offset="0"/>
                     </LinearGradientBrush>
                 </Border.Background>
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <!--Cotrol bar-->
+                        <RowDefinition Height="25"/>
+                        <!--Header-->
+                        <RowDefinition Height="35"/>
+                        <!--Content section-->
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <!--Control bar-->
+                    <StackPanel x:Name="pnlControlBar"
+                Grid.Row="0"
+                Orientation="Horizontal"
+                FlowDirection="RightToLeft"
+                Background="Transparent"
+                Margin="0,0,5,0"
+                MouseLeftButtonDown="pnlControlBar_MouseLeftButtonDown"
+                MouseEnter = "pnlControlBar_MouseEnter">
+
+                        <Button x:Name="btnClose"
+                Style="{StaticResource controlButton}"
+                Tag="{StaticResource color4}"
+                Click="btnClose_Click">
+                            <fa:IconImage Icon="X" Style="{StaticResource controlButtonIcon}"/>
+                        </Button>
+
+                        <Button x:Name="btnMaximize"
+                Style="{StaticResource controlButton}"
+                Tag="{StaticResource color5}"
+                Click="btnMaximize_Click">
+                            <fa:IconImage Icon="WindowMaximize" Style="{StaticResource controlButtonIcon}"/>
+                        </Button>
+
+                        <Button x:Name="btnMinimize"
+                Style="{StaticResource controlButton}"
+                Tag="{StaticResource color3}"
+                Click="btnMinimize_Click">
+                            <fa:IconImage Icon="WindowMinimize" Style="{StaticResource controlButtonIcon}"/>
+                        </Button>
+
+                    </StackPanel>
+
+                    <!--Header-->
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+
+                        <!--Log out-->
+                        <StackPanel Grid.Column="1"
+                    Orientation="Horizontal"
+                    FlowDirection="RightToLeft"
+                    VerticalAlignment="Center"
+                    Margin="0,0,10,0">
+
+                            <Button Content="Log out" 
+                    Click="btn_Logout_Click"
+                    Background="Transparent"
+                    Margin="10,0,0,0"/>
+
+
+                        </StackPanel>
+
+                    </Grid>
+
+                    <!--Content section-->
+                    <ContentControl x:Name="contentControl"
+                    Grid.Row="2"
+                    Margin="18">
+                        <local:ProductPage/>
+                    </ContentControl>
+
+                </Grid>
 
             </Border>
 

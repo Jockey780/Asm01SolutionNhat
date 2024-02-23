@@ -38,5 +38,24 @@ namespace DataAccess.DAO
             dbContext.Products.Add(product);
             dbContext.SaveChanges();
         }
+        public void UpdateProduct(Product product)
+        {
+            var existingProduct = dbContext.Products.Find(product.ProductId);
+            if (existingProduct != null)
+            {
+                // Update thông tin của sản phẩm
+                existingProduct.Category = product.Category;
+                existingProduct.ProductName = product.ProductName;
+                existingProduct.UnitPrice = product.UnitPrice;
+                existingProduct.Quantity = product.Quantity;
+
+                dbContext.SaveChanges();
+            }
+        }
+        public void DeleteProduct(Product product)
+        {
+            dbContext.Products.Remove(product);
+            dbContext.SaveChanges();
+        }
     }
 }

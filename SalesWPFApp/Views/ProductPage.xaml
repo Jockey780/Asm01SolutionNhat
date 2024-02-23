@@ -25,18 +25,19 @@
                           Width="20" 
                           Foreground="{StaticResource plainTextColor3}"/>
 
-                <TextBox Text="Search..."   
-                FontSize="13"
-                     Height="24"
-                       Width="300"
-                       Background="Transparent"
+                <TextBox Text="Search..."
+                         x:Name="txt_Search"
+                         FontSize="13"
+                         Height="24"
+                         Width="300"
+                         Background="Transparent"
                          FontWeight="Medium"
                          FontFamily="Montserrat"                            
                          Foreground="{StaticResource plainTextColor3}"
                          CaretBrush="{StaticResource plainTextColor3}"
                          BorderBrush="{StaticResource plainTextColor3}"
                          BorderThickness="0,0,0,1"                             
-                         VerticalContentAlignment="Center"
+                         VerticalContentAlignment="Center"                     
                          Margin="5,5,0,0"></TextBox>
             </StackPanel>
             <Button Grid.Column="1"
@@ -47,6 +48,7 @@
                         Cursor="Hand"
                         BorderThickness="0"
                         Foreground="White"
+                        Click="btn_Search_Click"
                 VerticalAlignment="Top">
                 <Button.Style>
                     <Style TargetType="Button">

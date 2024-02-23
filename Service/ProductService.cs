@@ -25,6 +25,18 @@ namespace Service
         public void AddProduct(Product product)
         {
             productRepository.AddProduct(product);
+            List<Product> updatedProducts = productRepository.GetProducts();
+
+        }
+
+        public void UpdateProduct(Product product)
+        {
+            productRepository.UpdateProduct(product);
+        }
+
+        public void DeleteProduct(Product product)
+        {
+            productRepository.DeleteProduct(product);
         }
     }
 }

@@ -70,21 +70,15 @@ namespace SalesWPFApp.Views
                     ProductName = txt_ProductName.Text,
                     UnitPrice = unitPrice,
                     Quantity = quantity
-                    // Các thuộc tính khác...
                 };
 
-                // Gọi phương thức thêm sản phẩm từ ProductService
                 productService.AddProduct(newProduct);
 
-                // Làm mới DataGrid để hiển thị sản phẩm mới thêm vào
                 RefreshDataGrid();
 
-                // Optional: Xóa dữ liệu trên TextBox sau khi thêm thành công
-                ClearTextBoxes();
             }
             else
             {
-                // Hiển thị thông báo lỗi nếu đầu vào không hợp lệ
                 MessageBox.Show("Invalid input. Please check the entered values.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
@@ -93,11 +87,11 @@ namespace SalesWPFApp.Views
         {
             // Làm mới DataGrid để hiển thị sản phẩm mới thêm vào
             dtg_Product.ItemsSource = productService.GetProducts();
+            ClearTextBoxes();
         }
 
         private void ClearTextBoxes()
         {
-            // Xóa dữ liệu trên TextBox
             txt_ProductId.Clear();
             txt_CategoryId.Clear();
             txt_ProductName.Clear();
@@ -107,12 +101,75 @@ namespace SalesWPFApp.Views
 
         private void btnEditProduct_Click(object sender, RoutedEventArgs e)
         {
+            if (dtg_Product.SelectedItem != null)
+            {
+                // Lấy sản phẩm đã chọn từ DataGrid
+                Product selectedProduct = (Product)dtg_Product.SelectedItem;
 
+                // Cập nhật thông tin từ TextBox vào sản phẩm đã chọn
+                selectedProduct.Category = int.Parse(txt_CategoryId.Text);
+                selectedProduct.ProductName = txt_ProductName.Text;
+                selectedProduct.UnitPrice = decimal.Parse(txt_UnitPrice.Text);
+                selectedProduct.Quantity = int.Parse(txt_Quantity.Text);
+
+                // Gọi phương thức EditProduct từ ProductService để lưu thay đổi
+                productService.UpdateProduct(selectedProduct);
+
+                // Cập nhật lại danh sách sản phẩm trong DataGrid
+                RefreshDataGrid();
+            }
         }
 
         private void btnDeleteProduct_Click(object sender, RoutedEventArgs e)
         {
+            if (dtg_Product.SelectedItem != null)
+            {
+                MessageBoxResult result = MessageBox.Show("Are you sure you want to delete this product?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
 
+                if (result == MessageBoxResult.Yes)
+                {
+                    Product selectedData = (Product)dtg_Product.SelectedItem;
+
+                    productService.DeleteProduct(selectedData);
+
+                    RefreshDataGrid();
+                }
+            }
+        }
+
+        private void btn_Search_Click(object sender, RoutedEventArgs e)
+        {
+            string keyword = txt_Search.Text.Trim().ToLower();
+
+            if (string.IsNullOrEmpty(keyword))
+            {
+                // Nếu TextBox tìm kiếm trống, hiển thị toàn bộ sản phẩm
+                RefreshDataGrid();
+            }
+            else
+            {
+                // Kiểm tra xem keyword có phải là một số không
+                if (int.TryParse(keyword, out int categoryId))
+                {
+                    // Nếu keyword là một số, lọc danh sách sản phẩm theo CategoryId
+                    List<Product> filteredProducts = productService.GetProducts().Where(p =>
+                        p.Category == categoryId
+                    ).ToList();
+
+                    dtg_Product.ItemsSource = filteredProducts;
+                }
+                else
+                {
+                    // Nếu không phải là số, thực hiện tìm kiếm theo các trường khác
+                    List<Product> filteredProducts = productService.GetProducts().Where(p =>
+                        p.ProductName.ToLower().Contains(keyword) ||
+                        p.UnitPrice.ToString().ToLower().Contains(keyword) ||
+                        p.Quantity.ToString().ToLower().Contains(keyword)
+                    ).ToList();
+
+                    dtg_Product.ItemsSource = filteredProducts;
+                }
+            }
         }
     }
 }
