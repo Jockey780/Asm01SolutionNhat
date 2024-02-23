@@ -19,11 +19,13 @@ Các chức năng đã thực hiện:
 	- Staff chỉ có xem và chỉnh sửa Product và Order detail (em bị do bug ở phần khi chọn menu thì nó không hiện nội dung lên)
 
 Các phi chức năng đã thực hiện:
+
 	- Thiết kế lại giao diện WPF nhờ tích hợp một xíu về MVVM trong layer GUI
 	- Thêm đổ bóng cho các TextBox và Button
 	- Có thể Minimzie, Maximize window trong window Admin, Staff, Customer
 	- Có thể tắt Window
 
 Tổng kết
+
 	Với những chức năng và thiếu sót của em thì em xin đánh giá bài em là 6 điểm.
 		Em xin cảm ơn
