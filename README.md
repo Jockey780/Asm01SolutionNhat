@@ -1,3 +1,6 @@
+Link youtube: https://youtu.be/NZkraSb_iBw
+
+
 Mô tả bài chi tiết Assigment 1 WPF
 	Lê Hoàng Minh Nhật 
 	SE161790 
